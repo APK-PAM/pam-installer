@@ -31,25 +31,25 @@ function prepare_install() {
 }
 
 function get_installer() {
-  echo "download install script to /opt/jumpserver-installer-${VERSION}"
+  echo "download install script to /opt/pam-installer-${VERSION}"
   cd /opt || exit 1
-  if [ ! -d "/opt/jumpserver-installer-${VERSION}" ]; then
-    timeout 60 wget -qO jumpserver-installer-${VERSION}.tar.gz ${DOWNLOAD_URL}/jumpserver/installer/releases/download/${VERSION}/jumpserver-installer-${VERSION}.tar.gz || {
-      rm -f /opt/jumpserver-installer-${VERSION}.tar.gz
-      echo -e "[\033[31m ERROR \033[0m] Failed to download jumpserver-installer-${VERSION}"
+  if [ ! -d "/opt/pam-installer-${VERSION}" ]; then
+    timeout 60 wget -qO pam-installer-${VERSION}.tar.gz ${DOWNLOAD_URL}/APK-PAM/pam-installer/releases/download/${VERSION}/pam-installer-${VERSION}.tar.gz || {
+      rm -f /opt/pam-installer-${VERSION}.tar.gz
+      echo -e "[\033[31m ERROR \033[0m] Failed to download pam-installer-${VERSION}"
       exit 1
     }
-    tar -xf /opt/jumpserver-installer-${VERSION}.tar.gz -C /opt || {
-      rm -rf /opt/jumpserver-installer-${VERSION}
-      echo -e "[\033[31m ERROR \033[0m] Failed to unzip jumpserver-installer-${VERSION}"
+    tar -xf /opt/pam-installer-${VERSION}.tar.gz -C /opt || {
+      rm -rf /opt/pam-installer-${VERSION}
+      echo -e "[\033[31m ERROR \033[0m] Failed to unzip pam-installer-${VERSION}"
       exit 1
     }
-    rm -f /opt/jumpserver-installer-${VERSION}.tar.gz
+    rm -f /opt/pam-installer-${VERSION}.tar.gz
   fi
 }
 
 function config_installer() {
-  cd /opt/jumpserver-installer-${VERSION} || exit 1
+  cd /opt/pam-installer-${VERSION} || exit 1
   ./jmsctl.sh install
   ./jmsctl.sh start
 }
