@@ -37,24 +37,24 @@ function pre_check() {
 }
 
 function usage() {
-  echo "$(gettext 'JumpServer Deployment Management Script')"
+  echo "$(gettext 'APK PAM Deployment Management Script')"
   echo
   echo "Usage: "
   echo "  ./jmsctl.sh [COMMAND] [ARGS...]"
   echo "  ./jmsctl.sh --help"
   echo
   echo "Installation Commands: "
-  echo "  install           $(gettext 'Install JumpServer')"
-  echo "  upgrade           $(gettext 'Upgrade JumpServer')"
+  echo "  install           $(gettext 'Install APK PAM')"
+  echo "  upgrade           $(gettext 'Upgrade APK PAM')"
   echo
   echo "Management Commands: "
   echo "  config            $(gettext 'Configuration  Tools')"
-  echo "  start             $(gettext 'Start     JumpServer')"
-  echo "  stop              $(gettext 'Stop      JumpServer')"
-  echo "  restart           $(gettext 'Restart   JumpServer')"
-  echo "  status            $(gettext 'Check     JumpServer')"
-  echo "  down              $(gettext 'Offline   JumpServer')"
-  echo "  uninstall         $(gettext 'Uninstall JumpServer')"
+  echo "  start             $(gettext 'Start     APK PAM')"
+  echo "  stop              $(gettext 'Stop      APK PAM')"
+  echo "  restart           $(gettext 'Restart   APK PAM')"
+  echo "  status            $(gettext 'Check     APK PAM')"
+  echo "  down              $(gettext 'Offline   APK PAM')"
+  echo "  uninstall         $(gettext 'Uninstall APK PAM')"
   echo
   echo "More Commands: "
   echo "  load_image        $(gettext 'Loading docker image')"
