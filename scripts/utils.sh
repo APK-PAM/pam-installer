@@ -208,11 +208,11 @@ function get_images() {
     echo "registry.fit2cloud.com/jumpserver/xrdp:${VERSION}"
     echo "registry.fit2cloud.com/jumpserver/panda:${VERSION}"
   else
-    echo "jumpserver/core:${VERSION}"
-    echo "jumpserver/koko:${VERSION}"
-    echo "jumpserver/lion:${VERSION}"
-    echo "jumpserver/chen:${VERSION}"
-    echo "jumpserver/web:${VERSION}"
+    echo "swaprepo.apk-group.net/apkpam/strv1/module/pam_core:${VERSION}"
+    echo "swaprepo.apk-group.net/apkpam/strv1/module/pam_koko:${VERSION}"
+    echo "swaprepo.apk-group.net/apkpam/strv1/module/pam_lion:${VERSION}"
+    echo "swaprepo.apk-group.net/apkpam/strv1/module/pam_chen:${VERSION}"
+    echo "swaprepo.apk-group.net/apkpam/strv1/module/pam_web:${VERSION}"
   fi
 }
 
@@ -523,13 +523,12 @@ function prepare_config() {
 
 function echo_logo() {
   cat <<"EOF"
-
-       ██╗██╗   ██╗███╗   ███╗██████╗ ███████╗███████╗██████╗ ██╗   ██╗███████╗██████╗
-       ██║██║   ██║████╗ ████║██╔══██╗██╔════╝██╔════╝██╔══██╗██║   ██║██╔════╝██╔══██╗
-       ██║██║   ██║██╔████╔██║██████╔╝███████╗█████╗  ██████╔╝██║   ██║█████╗  ██████╔╝
-  ██   ██║██║   ██║██║╚██╔╝██║██╔═══╝ ╚════██║██╔══╝  ██╔══██╗╚██╗ ██╔╝██╔══╝  ██╔══██╗
-  ╚█████╔╝╚██████╔╝██║ ╚═╝ ██║██║     ███████║███████╗██║  ██║ ╚████╔╝ ███████╗██║  ██║
-   ╚════╝  ╚═════╝ ╚═╝     ╚═╝╚═╝     ╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝
+          _____  _  __ _______          __     _____  
+    /\   |  __ \| |/ // ____\ \        / /\   |  __ \ 
+   /  \  | |__) | ' /| (___  \ \  /\  / /  \  | |__) |
+  / /\ \ |  ___/|  <  \___ \  \ \/  \/ / /\ \ |  ___/ 
+ / ____ \| |    | . \ ____) |  \  /\  / ____ \| |     
+/_/    \_\_|    |_|\_\_____/    \/  \/_/    \_\_|
 
 EOF
 
@@ -537,7 +536,7 @@ EOF
 }
 
 function get_latest_version() {
-  curl -s 'https://api.github.com/repos/jumpserver/jumpserver/releases/latest' |
+  curl -s 'https://api.github.com/repos/APK-PAM/pam-installer/releases/latest' |
     grep "tag_name" | head -n 1 | awk -F ":" '{print $2}' |
     sed 's/\"//g;s/,//g;s/ //g'
 }

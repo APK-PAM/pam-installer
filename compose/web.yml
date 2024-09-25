@@ -1,13 +1,13 @@
 services:
   web:
-    image: swaprepo.apk-group.net/apkpam/strv1/module/pam_web:latest
+    image: swaprepo.apk-group.net/apkpam/strv1/module/pam_web:${VERSION}
     container_name: jms_web
     hostname: jms_web
     ulimits:
       core: 0
     restart: always
     environment:
-      TZ: ${TZ:-Asia/Shanghai}
+      TZ: ${TZ:-Asia/Tehran}
       HTTP_PORT: ${HTTP_PORT:-80}
       USE_LB: ${USE_LB:-1}
       USE_IPV6: ${USE_IPV6:-0}
