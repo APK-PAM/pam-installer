@@ -10,7 +10,7 @@ shopt -s expand_aliases
 # 打包
 cd "${project_dir}" || exit 3
 rm -rf "${release_dir:?}"/*
-to_dir="${release_dir}/jumpserver-installer"
+to_dir="${release_dir}/pam-installer"
 mkdir -p "${to_dir}"
 
 if [[ -d '.git' ]]; then

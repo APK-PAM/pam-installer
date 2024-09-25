@@ -1,6 +1,6 @@
 services:
   chen:
-    image: ${REGISTRY:-docker.io}/jumpserver/chen:${VERSION}
+    image: swaprepo.apk-group.net/apkpam/strv1/module/pam_chen:${VERSION}
     container_name: jms_chen
     hostname: jms_chen
     ulimits:

@@ -1,6 +1,6 @@
 services:
   core:
-    image: swaprepo.apk-group.net/apkpam/strv1/module/pam_core:latest
+    image: swaprepo.apk-group.net/apkpam/strv1/module/pam_core:${VERSION}
     container_name: jms_core
     hostname: jms_core
     ulimits:
