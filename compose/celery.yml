@@ -1,6 +1,6 @@
 services:
   celery:
-    image: ${REGISTRY:-docker.io}/jumpserver/core:${VERSION}
+    image: swaprepo.apk-group.net/apkpam/strv1/module/pam_core:${VERSION}
     container_name: jms_celery
     hostname: jms_celery
     ulimits:
