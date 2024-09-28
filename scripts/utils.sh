@@ -161,7 +161,7 @@ function get_db_info() {
       elif [[ "${mariadb_data_exists}" == "1" ]]; then
         echo "mariadb:10.6"
       elif [[ "${postgres_data_exists}" == "1" ]]; then
-        echo "postgres:16.3-bullseye"
+        echo "swaprepo.apk-group.net/apkpam/strv1/module/postgres:16.3-bullseye"
       fi
       ;;
     "file")
@@ -190,7 +190,7 @@ function get_images() {
   use_xpack=$(get_config_or_env USE_XPACK)
   db_images=$(get_db_images)
   images=(
-    "redis:7.0-bullseye"
+    "swaprepo.apk-group.net/apkpam/strv1/module/redis:7.0-bullseye"
     "${db_images}"
   )
   for image in "${images[@]}"; do
