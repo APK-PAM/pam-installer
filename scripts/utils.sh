@@ -523,12 +523,11 @@ function prepare_config() {
 
 function echo_logo() {
   cat <<"EOF"
-          _____  _  __ _______          __     _____  
-    /\   |  __ \| |/ // ____\ \        / /\   |  __ \ 
-   /  \  | |__) | ' /| (___  \ \  /\  / /  \  | |__) |
-  / /\ \ |  ___/|  <  \___ \  \ \/  \/ / /\ \ |  ___/ 
- / ____ \| |    | . \ ____) |  \  /\  / ____ \| |     
-/_/    \_\_|    |_|\_\_____/    \/  \/_/    \_\_|
+    _    ____  _  ______   _    __  __ 
+   / \  |  _ \| |/ /  _ \ / \  |  \/  |
+  / _ \ | |_) | ' /| |_) / _ \ | |\/| |
+ / ___ \|  __/| . \|  __/ ___ \| |  | |
+/_/   \_\_|   |_|\_\_| /_/   \_\_|  |_|
 
 EOF
 
@@ -708,15 +707,22 @@ function pull_images() {
 
   trap 'kill ${pids[*]}' SIGINT SIGTERM
 
-  for image in ${images_to}; do
-    pull_image "$image" &
-    pids+=($!)
-  done
-  wait ${pids[*]}
+  docker login $(get_config_or_env 'DOCKER_LOGIN_URL') -u $(get_config_or_env 'DOCKER_LOGIN_USER') -p $(get_config_or_env 'DOCKER_LOGIN_PASSWORD')
+  if [ $? -eq 0 ]; then
+    for image in ${images_to}; do
+      pull_image "$image" &
+      pids+=($!)
+    done
+    wait ${pids[*]}
 
-  trap - SIGINT SIGTERM
+    trap - SIGINT SIGTERM
 
-  check_images
+    docker logout $(get_config_or_env 'DOCKER_LOGIN_USER')
+    check_images
+  else
+    echo_red "Docker login failed!"
+    exit 1
+  fi
 }
 
 function installation_log() {
