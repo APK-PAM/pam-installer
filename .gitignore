@@ -16,3 +16,4 @@ cofnig.link
 config.link
 release/*
 .history/
+authorization.env
