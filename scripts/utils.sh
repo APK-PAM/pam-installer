@@ -707,7 +707,8 @@ function pull_images() {
 
   trap 'kill ${pids[*]}' SIGINT SIGTERM
 
-  docker login $(get_config_or_env 'DOCKER_LOGIN_URL') -u $(get_config_or_env 'DOCKER_LOGIN_USER') -p $(get_config_or_env 'DOCKER_LOGIN_PASSWORD')
+  source ../authorization.env
+  docker login $DOCKER_LOGIN_URL -u $DOCKER_LOGIN_USER -p $DOCKER_LOGIN_PASSWORD
   if [ $? -eq 0 ]; then
     for image in ${images_to}; do
       pull_image "$image" &
