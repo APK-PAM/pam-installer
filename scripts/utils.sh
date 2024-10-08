@@ -718,7 +718,7 @@ function pull_images() {
 
     trap - SIGINT SIGTERM
 
-    docker logout $(get_config_or_env 'DOCKER_LOGIN_USER')
+    # docker logout $(get_config_or_env 'DOCKER_LOGIN_USER')
     check_images
   else
     echo_red "Docker login failed!"
