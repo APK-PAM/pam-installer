@@ -32,6 +32,7 @@ function prepare_install() {
 
 function get_installer() {
   echo "download install script to /opt/pam-installer-${VERSION}"
+  BASE_PATH="$(pwd)"
   cd /opt || exit 1
   if [ ! -d "/opt/pam-installer-${VERSION}" ]; then
     timeout 60 wget -qO pam-installer-${VERSION}.tar.gz ${DOWNLOAD_URL}/APK-PAM/pam-installer/releases/download/${VERSION}/pam-installer-${VERSION}.tar.gz || {
@@ -42,6 +43,10 @@ function get_installer() {
     tar -xf /opt/pam-installer-${VERSION}.tar.gz -C /opt || {
       rm -rf /opt/pam-installer-${VERSION}
       echo -e "[\033[31m ERROR \033[0m] Failed to unzip pam-installer-${VERSION}"
+      exit 1
+    }
+    cp ${BASE_PATH}/authorization.env /opt/pam-installer-${VERSION} || {
+      echo -e "Registery credentials not found!"
       exit 1
     }
     rm -f /opt/pam-installer-${VERSION}.tar.gz
