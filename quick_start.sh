@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 
-VERSION=v1.0.0
+VERSION=v1.0.1
 DOWNLOAD_URL=https://github.com
 
 function install_soft() {
